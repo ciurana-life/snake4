@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8" />
-    <title>Macroquad Snake</title>
-    <style>
-      body { margin: 0; padding: 0; overflow: hidden; }
-      canvas { display: block; width: 100vw; height: 100vh; }
-    </style>
+    <meta charset="UTF-8">
+    <title>Snake Game</title>
+    <style>body { margin: 0; overflow: hidden; }</style>
   </head>
   <body>
     <script type="module">
+      // Polyfill for env if needed
+      if (!window.env) {
+        window.env = {
+          memory: new WebAssembly.Memory({ initial: 256 }),
+          table: new WebAssembly.Table({ initial: 0, element: 'anyfunc' })
+        };
+      }
+      
       import init from './snake4.js';
       await init();
     </script>
