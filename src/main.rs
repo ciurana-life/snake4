@@ -1,8 +1,7 @@
 use macroquad::prelude::*;
 use snake3::{
-    named,
+    SnakeGame, named,
     snake::{Apple, SnakeDirection},
-    SnakeGame,
 };
 
 // Game constants
@@ -64,7 +63,8 @@ impl Game {
         let input_moved = self.handle_input();
 
         // Determine if we should move based on either input or timer
-        let should_move = (input_moved && (current_time - self.last_move_time) >= MIN_MOVE_INTERVAL)
+        let should_move = (input_moved
+            && (current_time - self.last_move_time) >= MIN_MOVE_INTERVAL)
             || (!input_moved && self.update_timer >= BASE_UPDATE_INTERVAL);
 
         if should_move {
@@ -124,18 +124,16 @@ impl Game {
         }
 
         // Draw score
-        draw_text(
-            &format!("Score: {}", self.score),
-            20.0,
-            20.0,
-            30.0,
-            WHITE,
-        );
+        draw_text(&format!("Score: {}", self.score), 20.0, 20.0, 30.0, WHITE);
     }
 }
 
 #[macroquad::main("Snake Game")]
 async fn main() {
+
+    // Warm up macroquad RNG
+    _ = macroquad::rand::gen_range(0, 1); // force init
+
     // Initialize game with appropriate grid size
     let (columns, rows) = (
         (screen_width() / GRID_WIDTH).floor() as i16 - 1,

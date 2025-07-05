@@ -521,11 +521,12 @@ checksum = "67b1b7a3b5fe4f1376887184045fcf45c69e92af734b7aaddc05fb777b6fbd03"
 
 [[package]]
 name = "snake3"
-version = "0.1.0"
+version = "0.1.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "bc2aad96969c1d12752383006ff7d03dc49fb2771b4cdd3b011be6ab7d71b513"
+checksum = "53e41ee5b2f2974190215af0cc381f2492877e856c323081b944bed82ca765a7"
 dependencies = [
  "crossterm",
+ "macroquad",
  "rand",
 ]
 
