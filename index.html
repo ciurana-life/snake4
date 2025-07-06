@@ -1,22 +1,30 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Snake Game</title>
-    <style>body { margin: 0; overflow: hidden; }</style>
-  </head>
-  <body>
-    <script type="module">
-      // Polyfill for env if needed
-      if (!window.env) {
-        window.env = {
-          memory: new WebAssembly.Memory({ initial: 256 }),
-          table: new WebAssembly.Table({ initial: 0, element: 'anyfunc' })
-        };
-      }
-      
-      import init from './snake4.js';
-      await init();
-    </script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <title>Snake Game</title>
+  <style>
+    html,
+    body,
+    canvas {
+        margin: 0px;
+        padding: 0px;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        position: absolute;
+        background: black;
+        z-index: 0;
+    }
+</style>
+</head>
+<body>
+  test
+  <canvas id="glcanvas" tabindex='1'></canvas>
+
+  <script src="https://not-fl3.github.io/miniquad-samples/gl.js"></script> <!-- gl.js from miniquad repo (native/sapp-wasm/js/gl.js) -->
+  <script>load("snake4.wasm");</script> 
+
+ 
+</body>
 </html>
